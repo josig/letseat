@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use App\BusinessDocument;
+use App\User;
 use App\Http\Requests\CreateTransactionRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,9 +35,7 @@ class TransactionController extends Controller
 
     public function store(CreateTransactionRequest $request)
     {
-        //dd($request->save());
         $request->save();
-
         
         $Response = ['success' => 'La transacción fue procesada correctamente.'];
         return response()->json($Response,200);

@@ -15,21 +15,22 @@ class CreateTransactionRequest extends FormRequest
 {
     //protected $redirectRoute = 'transaction.create';
     
-    /*protected function prepareForValidation():void
+    protected function prepareForValidation():void
     {
         // Sumo datos a los recibidos del formulario
-        $this->merge([
+        /*$this->merge([
             'id_user' => $user[0]->id,
             'id_paymentMethod' => 1,
             'id_transactionConcept' => 1,
             'id_businessDocument' => null,
             'id_currency' => 1,
             'reference' => ,
-        ]);
-    }*/
+        ]);*/
+    }
 
     public function authorize()
     {
+        //return auth()->check();
         return true;
     }
 
@@ -41,17 +42,16 @@ class CreateTransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'governmentId' => ['required','numeric','digits_between:7,8'],
+            'governmentId' => ['required','exists:users','numeric','digits_between:7,8'],
             'paymentMethod' => ['nullable','numeric'],
             'transactionConcept' => ['required','numeric'],
             'currency' => ['required','numeric'],
-            'amount' => 'required',
+            'amount' => 'required','numeric','regex:/^\d+(\.\d{1,2})?$/',
             'status' => '',
         ];
     }
 
     public function save(){
-        
         
         $transactionResult = DB::transaction(function() {
 
@@ -146,7 +146,7 @@ class CreateTransactionRequest extends FormRequest
             }*/
         });
 
-        //return $transaction->tatest()->first;
+        //return $transaction->latest()->first;
     }
 
 
