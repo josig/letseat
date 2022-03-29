@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+	<!--begin::Head-->
+	<head>
+		<base href="">
+		<meta charset="utf-8" />
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+		<title>{{ config('app.name', 'Laravel') }}</title>
+		<meta name="description" content="Plataforma de gestión gastronómica para instituciones." />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="canonical" href="https://keenthemes.com/metronic" />
+
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+		<!--end::Fonts-->
+
+		<!--begin::Page Vendors Styles(used by this page)-->
+        @yield('styles')
+
+		<!--end::Page Vendors Styles-->
+
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+
+		<!--end::Global Theme Styles-->
+
+		<!--begin::Layout Themes(used by all pages)-->
+
+		<!--end::Layout Themes-->
+		<link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
+		@PWA
+	</head>
+
+	<!--end::Head-->
+    <!--begin::Body-->
+	<body id="kt_body" class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-static page-loading">
+
+		
+		<!--begin::Main-->
+
+		@include('partials._header-mobile')
+		<div class="d-flex flex-column flex-root">
+
+			<!--begin::Page-->
+			<div class="d-flex flex-row flex-column-fluid page">
+
+				<!--begin::Wrapper-->
+				<div class="d-flex flex-column flex-row-fluid" id="kt_wrapper">
+
+					
+
+					<!--begin::Content-->
+					<div class="d-flex flex-column flex-column-fluid" id="kt_content">
+                        <!--Content area here-->
+                        @yield('content')
+					</div>
+
+					<!--end::Content-->
+				</div>
+
+				<!--end::Wrapper-->
+			</div>
+
+			<!--end::Page-->
+		</div>
+
+		<!--end::Main-->
+		
+		
+
+		<!--begin::Global Config(global config for global JS scripts)-->
+		<script>
+			var KTAppSettings = {
+				"breakpoints": {
+					"sm": 576,
+					"md": 768,
+					"lg": 992,
+					"xl": 1200,
+					"xxl": 1200
+				},
+				"colors": {
+					"theme": {
+						"base": {
+							"white": "#ffffff",
+							"primary": "#6993FF",
+							"secondary": "#E5EAEE",
+							"success": "#1BC5BD",
+							"info": "#8950FC",
+							"warning": "#FFA800",
+							"danger": "#F64E60",
+							"light": "#F3F6F9",
+							"dark": "#212121"
+						},
+						"light": {
+							"white": "#ffffff",
+							"primary": "#E1E9FF",
+							"secondary": "#ECF0F3",
+							"success": "#C9F7F5",
+							"info": "#EEE5FF",
+							"warning": "#FFF4DE",
+							"danger": "#FFE2E5",
+							"light": "#F3F6F9",
+							"dark": "#D6D6E0"
+						},
+						"inverse": {
+							"white": "#ffffff",
+							"primary": "#ffffff",
+							"secondary": "#212121",
+							"success": "#ffffff",
+							"info": "#ffffff",
+							"warning": "#ffffff",
+							"danger": "#ffffff",
+							"light": "#464E5F",
+							"dark": "#ffffff"
+						}
+					},
+					"gray": {
+						"gray-100": "#F3F6F9",
+						"gray-200": "#ECF0F3",
+						"gray-300": "#E5EAEE",
+						"gray-400": "#D6D6E0",
+						"gray-500": "#B5B5C3",
+						"gray-600": "#80808F",
+						"gray-700": "#464E5F",
+						"gray-800": "#1B283F",
+						"gray-900": "#212121"
+					}
+				},
+				"font-family": "Poppins"
+			};
+		</script>
+
+		<!--end::Global Config-->
+
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		
+		<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+		<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
+		<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+
+		<!--end::Global Theme Bundle-->
+
+		<!--begin::Page Vendors(used by this page)-->
+
+		@yield('vendors')
+
+		<!--end::Page Vendors-->
+
+		<!--begin::Page Scripts(used by this page)-->
+        @yield('scripts')
+
+		<!--end::Page Scripts-->
+
+	</body>
+
+	<!--end::Body-->
+</html>
