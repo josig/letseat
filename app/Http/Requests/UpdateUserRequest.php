@@ -70,7 +70,14 @@ class UpdateUserRequest extends FormRequest
         DB::transaction(function () {
             $data = $this->validated();
 
-            $fullname = $data['firstName'] . ' ' . $data['middleName'] . ' ' . $data['lastName'];
+            if($data['middleName']){
+                $middleName = " ".$data['middleName']." ";
+            }
+            else {
+                $middleName = " ";
+            }
+
+            $fullname = $data['firstName'] . $middleName . $data['lastName'];
 
             $user = User::find($this->route('user')->id);
 
@@ -95,8 +102,8 @@ class UpdateUserRequest extends FormRequest
 
             $pivotId = $this->route('user')
                 ->establishments()
-                ->where('id_user', $this->route('user')->id)
-                ->where('id_establishment', $data['establishment'])
+                ->where('user_id', $this->route('user')->id)
+                ->where('establishment_id', $data['establishment'])
                 ->first()->pivot->id;
 
             $now = Carbon::now();

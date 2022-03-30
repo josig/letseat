@@ -66,22 +66,22 @@ class CreateTransactionRequest extends FormRequest
 
             //Creo un BusinessDocument
             $businessDocument = BusinessDocument::create([
-                'id_businessDocumentDetail' => 1,
-                'id_businessDocumentType' => 1,
+                'businessDocumentDetail_id' => 1,
+                'businessDocumentType_id' => 1,
                 'number' => '1212121212',
                 'amount' => $data['amount'],
                 //'status' => '1'
             ]);
 
             Transaction::create([
-                'id_user' => $user[0]->id,
-                'id_paymentMethod' => $data['paymentMethod'],
-                'id_transactionConcept' => $data['transactionConcept'],
-                'id_businessDocument' => $businessDocument->id,
-                'id_currency' => $data['currency'],
+                'user_id' => $user[0]->id,
+                'paymentMethod_id' => $data['paymentMethod'],
+                'transactionConcept_id' => $data['transactionConcept'],
+                'businessDocument_id' => $businessDocument->id,
+                'currency_id' => $data['currency'],
                 'amount' => $data['amount'],
                 'reference' => Str::upper($reference),
-                //'status' => '1'
+                'status' => '1'
             ]);
     
             

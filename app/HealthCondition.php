@@ -8,11 +8,11 @@ class HealthCondition extends Model
 {
     protected $table = 'healthConditions';
     protected $fillable = [
-        'id_user', 'id_healthCondition'
+        'user_id', 'healthCondition_id'
     ];
 
     public function users()
     {
-        return $this->belongstoMany('App\Users', 'users_healthConditions', 'id_healthCondition', 'id_user');
+        return $this->belongstoMany('App\Users', 'users_healthConditions', 'healthCondition_id', 'user_id');
     }
 }

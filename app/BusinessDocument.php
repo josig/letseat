@@ -9,10 +9,10 @@ class BusinessDocument extends Model
     protected $table = 'businessesDocuments';
 
     protected $fillable = [
-        'id_businessDocumentdetail'
+        'businessDocumentDetail_id'
     ];
 
     public function businessesDocumentsTypes(){
-        return $this->hasOne('App\BussinesDocumentType', 'id_businessDocumentType', 'id')->withTimestamps();
+        return $this->hasOne('App\BussinesDocumentType', 'businessDocumentType_id', 'id')->withTimestamps();
     }
 }

@@ -54,14 +54,14 @@ class User extends Authenticatable
 
     public function establishments()
     {
-        return $this->belongstoMany('App\Establishment', 'users_establishments', 'id_user', 'id_establishment')
+        return $this->belongstoMany('App\Establishment', 'users_establishments', 'user_id', 'establishment_id')
         ->withPivot('id','degree', 'section', 'shift', 'year', 'status', 'created_at', 'updated_at')
         ->withTimestamps();
     }
 
     public function relations()
     {
-        return $this->belongstoMany('App\User', 'usersRelations', 'id_parent', 'id_child')->withTimestamps();
+        return $this->belongstoMany('App\User', 'usersRelations', 'parent_id', 'child_id')->withTimestamps();
     }
 
     /*
@@ -73,17 +73,17 @@ class User extends Authenticatable
 
     public function accounts()
     {
-        return $this->belongstoMany('App\Account', 'users_accounts', 'id_user', 'id_account')->withTimestamps();
+        return $this->belongstoMany('App\Account', 'users_accounts', 'user_id', 'account_id')->withTimestamps();
     }
 
     public function transactions()
     {
-        return $this->hasMany('App\Transaction', 'id_user', 'id');
+        return $this->hasMany('App\Transaction', 'user_id', 'id');
     }
 
     public function healthConditions()
     {
-        return $this->belongstoMany('App\HealthCondition', 'users_healthConditions', 'id_user', 'id_healthCondition');
+        return $this->belongstoMany('App\HealthCondition', 'users_healthConditions', 'user_id', 'healthCondition_id');
     }
 
     public function hasAnyRoles($roles)

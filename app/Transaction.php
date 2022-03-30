@@ -11,26 +11,26 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     protected $fillable = [
-        'id_user','id_paymentMethod','id_transactionConcept','id_businessDocument','id_currency','amount','reference'
+        'user_id','paymentMethod_id','transactionConcept_id','businessDocument_id','currency_id','amount','reference'
     ];
 
     public function paymentsMethods()
     {
-        return $this->hasOne('App\PaymentMethod', 'id', 'id_paymentMethod');
+        return $this->hasOne('App\PaymentMethod', 'id', 'paymentMethod_id');
     }
 
     public function transactionsConcepts()
     {
-        return $this->hasOne('App\TransactionConcept', 'id', 'id_transactionConcept');
+        return $this->hasOne('App\TransactionConcept', 'id', 'transactionConcept_id');
     }
 
     public function businessesDocuments()
     {
-        return $this->hasOne('App\BusinessDocument', 'id', 'id_businessDocument');
+        return $this->hasOne('App\BusinessDocument', 'id', 'businessDocument_id');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'id_user', 'id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 }

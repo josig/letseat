@@ -17,7 +17,5 @@ class SuperadminController extends Controller
         $title = array('Dashboard','Super Administrador');
         //$users = User::with(['relations', 'roles'])->get();
         return view('dashboards.superadmin', compact('title'));
-        
-        //return view('index', compact('title','users'));
     }
 }

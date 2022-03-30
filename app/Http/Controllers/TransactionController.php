@@ -19,7 +19,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all()->with();
+        $transactions = Transaction::all()->with('');
         return view('transaction.index', compact('transactions'));
     }
 
