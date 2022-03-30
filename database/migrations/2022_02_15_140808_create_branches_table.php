@@ -14,8 +14,8 @@ class CreateBranchesTable extends Migration
     public function up()
     {
         Schema::create('branches', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_establishment');
+            $table->tinyIncrements('id');
+            $table->unsignedSmallInteger('establishment_id');
             $table->string('name');
             $table->string('description')->nullable(null);
             $table->string('phone')->nullable(null);
@@ -27,10 +27,10 @@ class CreateBranchesTable extends Migration
             $table->string('state')->nullable(null);
             $table->string('zipCode')->nullable(null);
             $table->string('country')->nullable(null);
-            $table->string('status');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
-            $table->foreign('id_establishment')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('establishment_id')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

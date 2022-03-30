@@ -14,7 +14,7 @@ class CreateHealthConditionsTable extends Migration
     public function up()
     {
         Schema::create('healthConditions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->tinyIncrements('id');
             $table->string('name');
             $table->string('description')->nullable()->default(null);
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateHealthConditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('healthconditions');
+        Schema::dropIfExists('healthConditions');
     }
 }

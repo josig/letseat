@@ -14,22 +14,22 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('firstName')->default('')->required();
+            $table->increments('id');
+            $table->string('firstName')->required();
             $table->string('middleName')->nullable()->default(null);
-            $table->string('lastName')->nullable()->default(null)->required();
+            $table->string('lastName')->required()->nullable()->default(null);
             $table->string('fullName')->nullable()->default(null);
             $table->string('nickName')->nullable()->default(null);
-            $table->enum('gender', ['female', 'male'])->required();
+            $table->enum('gender', ['male', 'female'])->required();
             $table->date('birthday')->nullable()->default(null)->required();
-            $table->enum('governmentIdType', ['DNI', 'LC', 'LE', 'CI'])->required();
-            $table->char('governmentId', 8)->default('')->unique()->required();
+            $table->enum('governmentIdType', ['DNI', 'LC', 'LE', 'CI', 'Pasaporte'])->required();
+            $table->char('governmentId', 8)->required()->unique()->default('');
             $table->string('mobile')->nullable()->default(null);
-            $table->string('username')->unique();
+            $table->char('username',20)->required()->unique();
             $table->string('email')->required();
             $table->string('password')->required();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('status', ['0', '1', '2'])->default(1);
+            $table->tinyInteger('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

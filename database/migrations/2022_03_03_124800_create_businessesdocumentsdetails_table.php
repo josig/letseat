@@ -15,12 +15,12 @@ class CreateBusinessesDocumentsDetailsTable extends Migration
     {
         Schema::create('businessesDocumentsDetails', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_businessDocument');
+            $table->unsignedBigInteger('businessDocument_id');
             $table->unsignedInteger('quantity');
             $table->decimal('price',20,6);
             $table->timestamps();
 
-            //$table->foreign('id_businessDocument')->references('id')->on('businessesDocumentsDetails');
+            $table->foreign('businessDocument_id')->references('id')->on('businessesDocuments');
         });
     }
 

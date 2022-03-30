@@ -46,7 +46,7 @@ class CreateTransactionRequest extends FormRequest
             'paymentMethod' => ['nullable','numeric'],
             'transactionConcept' => ['required','numeric'],
             'currency' => ['required','numeric'],
-            'amount' => 'required','numeric','regex:/^\d+(\.\d{1,2})?$/',
+            'amount' => ['required','numeric','regex:/^\d+(\.\d{1,2})?$/'],
             'status' => '',
         ];
     }

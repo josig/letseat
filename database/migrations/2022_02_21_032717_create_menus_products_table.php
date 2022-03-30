@@ -14,13 +14,12 @@ class CreateMenusProductsTable extends Migration
     public function up()
     {
         Schema::create('menus_products', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_menu');
-            $table->unsignedBigInteger('id_product');
+            $table->unsignedSmallInteger('menu_id');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
 
-            $table->foreign('id_menu')->references('id')->on('menus')->onUpdate('cascade')->onDelete('no action');
-            $table->foreign('id_product')->references('id')->on('products')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('no action');
         });
     }
 

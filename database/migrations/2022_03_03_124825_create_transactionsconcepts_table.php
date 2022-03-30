@@ -14,10 +14,10 @@ class CreateTransactionsConceptsTable extends Migration
     public function up()
     {
         Schema::create('transactionsConcepts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->smallIncrements('id');
             $table->string('name');
             $table->string('description');
-            $table->enum('status',['0', '1'])->default(1);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

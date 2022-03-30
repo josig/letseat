@@ -194,19 +194,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($transactions as $item)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->fullName }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($user->birthday)->format('d-m-Y') }}</td>
-                                    <td>{{ $user->mobile }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->fullName }}</td>
+                                    <td>{{-- \Carbon\Carbon::parse($user->birthday)->format('d-m-Y') --}}</td>
+                                    <td>{{ $item->mobile }}</td>
+                                    <td>{{ $item->email }}</td>
                                     <td class="text-right">{{ $user->status }}</td>
                                     {{-- <td class="text-right">3</td> --}}
                                     <td class="text-right">
                                         <span style="overflow: visible; position: relative; width: 125px;">
                                         @can('users.edit')
-                                        <a href="{{ route('users.edit', ['user' => $user->id]) }}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Editar usuario">
+                                        <a href="{{ route('users.edit', ['user' => $item->id]) }}" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Editar usuario">
                                             <span class="menu-icon"><i class="fa fa-edit text-primary"></i></span>
                                         </a>
                                         @endcan

@@ -15,12 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedInteger('user_id');
             $table->string('reference');
-
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users')->onUpdate('no action')->onDelete('no action');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('no action')->onDelete('no action');
         });
     }
 

@@ -14,15 +14,16 @@ class CreateBusinessesDocumentsTable extends Migration
     public function up()
     {
         Schema::create('businessesDocuments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_businessDocumentDetail');
-            $table->unsignedBigInteger('id_businessDocumentType');
+            $table->smallIncrements('id');
+            $table->unsignedInteger('businessDocumentDetail_id');
+            $table->unsignedTinyInteger('businessDocumentType_id');
             $table->unsignedInteger('number')->default();
             $table->decimal('amount',20,6);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
-            $table->foreign('id_businessDocumentDetail')->references('id')->on('businessesDocumentsDetails');
-            $table->foreign('id_businessDocumentType')->references('id')->on('businessesDocumentsTypes');
+            $table->foreign('businessDocumentDetail_id')->references('id')->on('businessesDocumentsDetails');
+            $table->foreign('businessDocumentType_id')->references('id')->on('businessesDocumentsTypes');
         });
     }
     

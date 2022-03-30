@@ -14,11 +14,11 @@ class CreateUsersHealthconditionsTable extends Migration
     public function up()
     {
         Schema::create('users_healthConditions', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_healthCondition');
+            $table->unsignedInteger('id_user');
+            $table->unsignedTinyInteger('id_healthCondition');
 
-            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_healthCondition')->references('id')->on('healthConditions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('healthCondition_id')->references('id')->on('healthConditions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

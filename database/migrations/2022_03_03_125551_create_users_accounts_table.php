@@ -14,11 +14,13 @@ class CreateUsersAccountsTable extends Migration
     public function up()
     {
         Schema::create('users_accounts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_account');
-            $table->enum('status',['0','1']);
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('account_id');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('account_id')->references('id')->on('accounts')->onUpdate('cascade')->onDelete('no action');
         });
     }
 

@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name')->default('');
             $table->string('descriptionShort')->nullable()->default(null);
             $table->text('descriptionLarge')->nullable()->default(null);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

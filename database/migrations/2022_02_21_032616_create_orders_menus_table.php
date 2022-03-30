@@ -14,13 +14,12 @@ class CreateOrdersMenusTable extends Migration
     public function up()
     {
         Schema::create('orders_menus', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_order');
-            $table->unsignedBigInteger('id_menu');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedSmallInteger('menu_id');
             $table->timestamps();
 
-            $table->foreign('id_order')->references('id')->on('orders')->onUpdate('cascade')->onDelete('no action');
-            $table->foreign('id_menu')->references('id')->on('menus')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('cascade')->onDelete('no action');
         });
     }
 

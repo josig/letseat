@@ -14,7 +14,7 @@ class CreateEstablishmentsTable extends Migration
     public function up()
     {
         Schema::create('establishments', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->smallIncrements('id');
             $table->string('name');
             $table->string('description')->nullable(null);
             $table->timestamps();

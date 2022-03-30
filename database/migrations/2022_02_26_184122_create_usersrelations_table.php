@@ -14,13 +14,12 @@ class CreateUsersRelationsTable extends Migration
     public function up()
     {
         Schema::create('usersRelations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_parent');
-            $table->unsignedBigInteger('id_child');
+            $table->unsignedInteger('parent_id');
+            $table->unsignedInteger('child_id');
             $table->timestamps();
 
-            $table->foreign('id_parent')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_child')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('child_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

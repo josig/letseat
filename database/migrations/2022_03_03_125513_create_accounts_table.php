@@ -14,7 +14,7 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->float('balance',8,2);
             $table->timestamps();
         });

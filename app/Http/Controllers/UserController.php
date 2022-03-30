@@ -30,7 +30,7 @@ class UserController extends Controller
         $role = Auth::user()->roles[0]->name;
 
         if($role == 'Super Administrador') {
-            $users = User::all();
+            $users = User::all()->except(Auth::id());
         }
         elseif($role == 'Administrador'){
             //Cambiar a todos los Establishments = 1
