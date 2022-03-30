@@ -14,15 +14,15 @@ class TransactionConceptSeeder extends Seeder
     {
         DB::table('transactionsConcepts')->insert([
             'name' => 'Carga de crédito',
-            'description' => 'test'
+            'description' => null
         ]);
         DB::table('transactionsConcepts')->insert([
             'name' => 'Pago',
-            'description' => 'test'
+            'description' => null
         ]);
         DB::table('transactionsConcepts')->insert([
             'name' => 'Devolución',
-            'description' => 'test'
+            'description' => null
         ]);
     }
 }

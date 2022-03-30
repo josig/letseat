@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Role;
 
 class UserSeeder extends Seeder
 {
@@ -14,12 +13,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         //User::truncate();
-        $superAdminRole = Role::where('name', 'Super Administrador')->first();
-        $adminRole = Role::where('name', 'Administrador')->first();
-        $tutorRole = Role::where('name', 'Responsable')->first();
-        //$studentRole = Role::where('name', 'Alumno')->first();
 
-        $superAdmin = User::create([
+        User::create([
             'firstName' => 'José',
             'middleName' => 'Alberto',
             'lastName' => 'Guevara',
@@ -35,7 +30,7 @@ class UserSeeder extends Seeder
             'status' => '1'
         ])->assignRole('Super Administrador');
 
-        $admin = User::create([
+        User::create([
             'firstName' => 'Lisandro',
             'middleName' => '',
             'lastName' => 'Tambone',
@@ -51,7 +46,7 @@ class UserSeeder extends Seeder
             'status' => '1'
         ])->assignRole('Administrador');
 
-        $tutor = User::create([
+        User::create([
             'firstName' => 'María',
             'middleName' => 'Inés',
             'lastName' => 'Biurrun',
@@ -67,7 +62,7 @@ class UserSeeder extends Seeder
             'status' => '1'
         ])->assignRole('Responsable');
 
-        $student = User::create([
+        User::create([
             'firstName' => 'Felipe',
             'middleName' => null,
             'lastName' => 'Tambone',
@@ -82,10 +77,5 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345678'),
             'status' => '1'
         ]);
-        
-        /*$superAdmin->roles()->attach($superAdminRole);
-        $admin->roles()->attach($adminRole);
-        $tutor->roles()->attach($tutorRole);
-        $student->roles()->attach($studentRole);*/
     }
 }
