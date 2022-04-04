@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersHealthconditionsTable extends Migration
+class CreateHealthConditionsUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateUsersHealthconditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_healthConditions', function (Blueprint $table) {
-            $table->unsignedInteger('id_user');
+        Schema::create('healthConditions_users', function (Blueprint $table) {
+            $table->unsignedSmallInteger('establishment_id');
             $table->unsignedTinyInteger('id_healthCondition');
+            $table->unsignedInteger('id_user');
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('establishment_id')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('healthCondition_id')->references('id')->on('healthConditions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -29,6 +31,6 @@ class CreateUsersHealthconditionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_healthconditions');
+        Schema::dropIfExists('healthConditions_users');
     }
 }

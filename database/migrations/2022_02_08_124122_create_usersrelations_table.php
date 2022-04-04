@@ -14,10 +14,12 @@ class CreateUsersRelationsTable extends Migration
     public function up()
     {
         Schema::create('usersRelations', function (Blueprint $table) {
+            $table->unsignedSmallInteger('establishment_id');
             $table->unsignedInteger('parent_id');
             $table->unsignedInteger('child_id');
             $table->timestamps();
 
+            $table->foreign('establishment_id')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('parent_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('child_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });

@@ -13,14 +13,16 @@ class CreateUsersAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_accounts', function (Blueprint $table) {
-            $table->unsignedInteger('user_id');
+        Schema::create('accounts_users', function (Blueprint $table) {
+            $table->unsignedSmallInteger('establishment_id');
             $table->unsignedInteger('account_id');
+            $table->unsignedInteger('user_id');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('establishment_id')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('account_id')->references('id')->on('accounts')->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('no action');
         });
     }
 
@@ -31,6 +33,6 @@ class CreateUsersAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_accounts');
+        Schema::dropIfExists('accounts_users');
     }
 }

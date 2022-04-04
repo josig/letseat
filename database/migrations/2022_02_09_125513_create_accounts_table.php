@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstablishmentsTable extends Migration
+class CreateAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateEstablishmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('establishments', function (Blueprint $table) {
-            $table->smallIncrements('id');
+        Schema::create('accounts', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->string('description')->nullable(null);
+            $table->string('description');
+            $table->float('balance',8,2);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateEstablishmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('establishments');
+        Schema::dropIfExists('accounts');
     }
 }

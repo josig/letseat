@@ -64,13 +64,6 @@ class User extends Authenticatable
         return $this->belongstoMany('App\User', 'usersRelations', 'parent_id', 'child_id')->withTimestamps();
     }
 
-    /*
-    Hace conflicto con Spatie
-    public function roles()
-    {
-        return $this->belongstoMany('App\Role', 'users_roles', 'id_user', 'id_role')->withTimestamps();
-    }*/
-
     public function accounts()
     {
         return $this->belongstoMany('App\Account', 'users_accounts', 'user_id', 'account_id')->withTimestamps();

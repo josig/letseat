@@ -5,8 +5,7 @@
 
 
 @section('content')
-
-    Listado de establecimientos
+Nuevo establecimiento
 @endsection
 
 @section('scripts')

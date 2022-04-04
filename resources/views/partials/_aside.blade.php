@@ -30,30 +30,38 @@
 										<i class="menu-arrow"></i>
 										<ul class="menu-subnav">
 											<li class="menu-item" aria-haspopup="true">
-												<a href="{{ route('users.index') }}" class="menu-link">
+												<a href="{{ route('establishments.index') }}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
-													<span class="menu-text">Listado de Usuarios</span>
+													<span class="menu-text">Listado de Establecimientos</span>
 												</a>
 											</li>
 											<li class="menu-item" aria-haspopup="true">
-												<a href="/metronic/demo5/crud/file-upload/dropzonejs.html" class="menu-link">
+												<a href="{{ route('establishments.create') }}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
-													<span class="menu-text">Listado de Roles</span>
+													<span class="menu-text">Nuevo Establecimiento</span>
 													<span class="menu-label">
 														<span class="label label-danger label-inline">new</span>
 													</span>
 												</a>
 											</li>
 											<li class="menu-item" aria-haspopup="true">
-												<a href="/metronic/demo5/crud/file-upload/uppy.html" class="menu-link">
+												<a href="{{ route('establishments.index') }}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>
-													<span class="menu-text">Relaciones</span>
+													<span class="menu-text">Listado de Sedes</span>
+												</a>
+											</li>
+											<li class="menu-item" aria-haspopup="true">
+												<a href="{{ route('branches.create') }}" class="menu-link">
+													<i class="menu-bullet menu-bullet-dot">
+														<span></span>
+													</i>
+													<span class="menu-text">Nueva sede</span>
 												</a>
 											</li>
 										</ul>

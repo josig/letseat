@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBranchesTable extends Migration
+class CreateEstablishmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,16 @@ class CreateBranchesTable extends Migration
      */
     public function up()
     {
+        Schema::create('establishments', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('name');
+            $table->string('description')->nullable(null);
+            $table->tinyInteger('status')->default(0);
+            $table->timestamps();
+        });
+
         Schema::create('branches', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->unsignedSmallInteger('establishment_id');
+            $table->increments('id');
             $table->string('name');
             $table->string('description')->nullable(null);
             $table->string('phone')->nullable(null);
@@ -29,8 +36,6 @@ class CreateBranchesTable extends Migration
             $table->string('country')->nullable(null);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
-
-            $table->foreign('establishment_id')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -41,6 +46,6 @@ class CreateBranchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('establishments');
     }
 }

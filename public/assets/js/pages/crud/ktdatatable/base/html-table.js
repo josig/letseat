@@ -40,7 +40,7 @@ var KTDatatableHtmlTableDemo = function() {
       layout: {
         class: 'datatable-bordered',
       },
-      columns: [
+      /*columns: [
         {
           field: 'ID',
           width: 20
@@ -85,7 +85,7 @@ var KTDatatableHtmlTableDemo = function() {
           width: 90,
           overflow: 'visible',
           autoHide: false,
-          /*template: function() {
+          template: function() {
               return '\
                   <a href="javascript:;" class="btn btn-sm btn-light btn-text-primary btn-icon mr-2" title="Edit details">\
                       <span class="svg-icon svg-icon-md">\
@@ -110,9 +110,9 @@ var KTDatatableHtmlTableDemo = function() {
                       </span>\
                   </a>\
               ';
-          },*/
+          },
       }
-        /* {
+        {
           field: 'Type',
           title: 'Type',
           autoHide: false,
@@ -134,8 +134,8 @@ var KTDatatableHtmlTableDemo = function() {
             };
             return '<span class="label label-' + status[row.Type].state + ' label-dot mr-2"></span><span class="font-weight-bold text-' + status[row.Type].state + '">' + status[row.Type].title + '</span>';
           },
-        },*/
-      ],
+        },
+      ],*/
     });
 
     $('#kt_datatable_search_status').on('change', function() {

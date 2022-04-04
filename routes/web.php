@@ -37,5 +37,7 @@ Route::resource('user', 'UserController')->names('users');
 Route::resource('transaction', 'TransactionController')->names('transactions');
 Route::resource('order', 'OrderController')->names('orders');
 Route::resource('account', 'AccountController')->names('accounts');
+Route::resource('establishment', 'EstablishmentController')->names('establishments');
+Route::resource('branch', 'BranchController')->names('branches');
 
 PWA::routes();
