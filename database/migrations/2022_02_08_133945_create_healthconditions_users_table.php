@@ -15,8 +15,8 @@ class CreateHealthConditionsUsersTable extends Migration
     {
         Schema::create('healthConditions_users', function (Blueprint $table) {
             $table->unsignedSmallInteger('establishment_id');
-            $table->unsignedTinyInteger('id_healthCondition');
-            $table->unsignedInteger('id_user');
+            $table->unsignedTinyInteger('healthCondition_id');
+            $table->unsignedInteger('user_id');
 
             $table->foreign('establishment_id')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('healthCondition_id')->references('id')->on('healthConditions')->onUpdate('cascade')->onDelete('cascade');

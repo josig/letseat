@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use App\PaymentMethod;
+use Illuminate\Support\Carbon;
 
 class PaymentMethodSeeder extends Seeder
 {
@@ -13,17 +13,28 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now();
+        
         DB::table('paymentsMethods')->insert([
             'name' => 'Efectivo',
-            'description' => 'Efectivo'
+            'description' => 'Efectivo',
+            'status' => 1,
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
         DB::table('paymentsMethods')->insert([
             'name' => 'Tarjeta de débito',
-            'description' => 'Débito'
+            'description' => 'Débito',
+            'status' => 1,
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
         DB::table('paymentsMethods')->insert([
             'name' => 'Tarjeta de crédito',
-            'description' => 'Crédito'
+            'description' => 'Crédito',
+            'status' => 1,
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 use App\HealthCondition;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class HealthConditionSeeder extends Seeder
 {
@@ -12,23 +13,52 @@ class HealthConditionSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now();
+
         HealthCondition::create([
-            'name' => 'Diabetes']);
+            'name' => 'Diabetes',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => 'Celiaquía']);
+            'name' => 'Celiaquía',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => 'Hipertensión']);
+            'name' => 'Hipertensión',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => 'Obesidad']);
+            'name' => 'Obesidad',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => '(APLV) Alergia a la proteína de la vaca']);
+            'name' => '(APLV) Alergia a la proteína de la vaca',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => 'Intolerancia a la lactosa']);
+            'name' => 'Intolerancia a la lactosa',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => 'Alergia al huevo']);
+            'name' => 'Alergia al huevo',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => 'Alergia al pescado o marsicos']);
+            'name' => 'Alergia al pescado o marsicos',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
         HealthCondition::create([
-            'name' => 'Alergia a los frutos secos']);
+            'name' => 'Alergia a los frutos secos',
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
     }
 }

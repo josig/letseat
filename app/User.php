@@ -54,8 +54,15 @@ class User extends Authenticatable
 
     public function establishments()
     {
-        return $this->belongstoMany('App\Establishment', 'users_establishments', 'user_id', 'establishment_id')
-        ->withPivot('id','degree', 'section', 'shift', 'year', 'status', 'created_at', 'updated_at')
+        return $this->belongstoMany('App\Establishment', 'establishments_users', 'user_id', 'establishment_id')
+        ->withPivot('id','establishment_id','branch_id','degree', 'section', 'shift', 'year', 'status', 'created_at', 'updated_at')
+        ->withTimestamps();
+    }
+
+    public function branches()
+    {
+        return $this->belongstoMany('App\Branch', 'establishments_users', 'user_id', 'branch_id')
+        ->withPivot('id','establishment_id','branch_id','degree', 'section', 'shift', 'year', 'status', 'created_at', 'updated_at')
         ->withTimestamps();
     }
 
@@ -66,7 +73,7 @@ class User extends Authenticatable
 
     public function accounts()
     {
-        return $this->belongstoMany('App\Account', 'users_accounts', 'user_id', 'account_id')->withTimestamps();
+        return $this->belongstoMany('App\Account', 'accounts_users', 'user_id', 'account_id')->withTimestamps();
     }
 
     public function transactions()
@@ -76,7 +83,7 @@ class User extends Authenticatable
 
     public function healthConditions()
     {
-        return $this->belongstoMany('App\HealthCondition', 'users_healthConditions', 'user_id', 'healthCondition_id');
+        return $this->belongstoMany('App\HealthCondition', 'healthConditions_users', 'user_id', 'healthCondition_id');
     }
 
     public function hasAnyRoles($roles)

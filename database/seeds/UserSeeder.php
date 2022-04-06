@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Support\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -13,7 +14,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         //User::truncate();
-
+        $now = Carbon::now();
+        
         User::create([
             'firstName' => 'José',
             'middleName' => 'Alberto',
@@ -27,7 +29,10 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'email' => 'jose@xerebrumgroup.com',
             'password' => bcrypt('12345678'),
-            'status' => '1'
+            'status' => '1',
+            'created_at' => $now,
+            'updated_at' => $now
+        
         ])->assignRole('Super Administrador');
 
         User::create([
@@ -43,7 +48,10 @@ class UserSeeder extends Seeder
             'username' => 'lichi',
             'email' => 'lichitambone@hotmail.com',
             'password' => bcrypt('12345678'),
-            'status' => '1'
+            'status' => '1',
+            'created_at' => $now,
+            'updated_at' => $now
+        
         ])->assignRole('Administrador');
 
         User::create([
@@ -59,7 +67,10 @@ class UserSeeder extends Seeder
             'username' => 'ines',
             'email' => 'biurrunmariaines@gmail.com',
             'password' => bcrypt('12345678'),
-            'status' => '1'
+            'status' => '1',
+            'created_at' => $now,
+            'updated_at' => $now
+        
         ])->assignRole('Responsable');
 
         User::create([
@@ -75,7 +86,10 @@ class UserSeeder extends Seeder
             'username' => 'felipe',
             'email' => 'lucianaagustin@hotmail.com',
             'password' => bcrypt('12345678'),
-            'status' => '1'
+            'status' => '1',
+            'created_at' => $now,
+            'updated_at' => $now
+        
         ]);
     }
 }

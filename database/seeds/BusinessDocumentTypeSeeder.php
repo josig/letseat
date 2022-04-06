@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class BusinessDocumentTypeSeeder extends Seeder
 {
@@ -12,13 +13,25 @@ class BusinessDocumentTypeSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now();
+
         DB::table('businessesDocumentsTypes')->insert([
             'name' => 'Comprobante de pago',
-            'description' => 'test'
+            'description' => 'test',
+            'observations' => null,
+            'legal' => 0,
+            'status' => 1,
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
         DB::table('businessesDocumentsTypes')->insert([
             'name' => 'Factura',
-            'description' => 'test'
+            'description' => 'test',
+            'observations' => null,
+            'legal' => 0,
+            'status' => 1,
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
         /*BusinessDocument::create([
             'name' => 'Comprobante de pago',

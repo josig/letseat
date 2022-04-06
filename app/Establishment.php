@@ -9,8 +9,8 @@ class Establishment extends Model
     protected $touches = ['users'];
 
     public function users(){
-        return $this->belongsToMAny('App\User', 'users_establishments', 'user_id', 'establishment_id')
-        ->withPivot('user_id','degree', 'section', 'shift', 'year')
+        return $this->belongsToMAny('App\User', 'establishments_users', 'user_id', 'establishment_id')
+        ->withPivot('establishment_id','branch_id','user_id','degree', 'section', 'shift', 'year')
         ->withTimestamps();
     }
 

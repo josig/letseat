@@ -19,7 +19,7 @@ class CreateUsersRelationsTable extends Migration
             $table->unsignedInteger('child_id');
             $table->timestamps();
 
-            $table->foreign('establishment_id')->references('id')->on('establishments')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('establishment_id')->references('id')->on('establishments');
             $table->foreign('parent_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('child_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });

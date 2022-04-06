@@ -22,7 +22,7 @@ class EstablishmentController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $establishment = $user->establishments;
-        dd($establishment);
+        
 
         $title = array('Establecimientos', 'Ver todos');
         $role = Auth::user()->roles[0]->name;

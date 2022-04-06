@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransactionsTable extends Migration
+class CreateTransactionsTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,23 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
+        Schema::create('transactionsConcepts', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('name');
+            $table->string('description')->nullable()->default(null);
+            $table->tinyInteger('status')->default(0);
+            $table->timestamps();
+        });
+
+
+        Schema::create('currencies', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('name');
+            $table->string('description')->nullable()->default(null);
+            $table->tinyInteger('status')->default(0);
+            $table->timestamps();
+        });
+
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedSmallInteger('establishment_id');
@@ -31,14 +48,7 @@ class CreateTransactionsTable extends Migration
             $table->foreign('paymentMethod_id')->references('id')->on('paymentsMethods');
             $table->foreign('transactionConcept_id')->references('id')->on('transactionsConcepts');
             $table->foreign('businessDocument_id')->references('id')->on('businessesDocuments');
-        });
-
-        Schema::create('transactionsConcepts', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->string('name');
-            $table->string('description');
-            $table->tinyInteger('status')->default(0);
-            $table->timestamps();
+            $table->foreign('currency_id')->references('id')->on('currencies');
         });
     }
 
@@ -51,5 +61,6 @@ class CreateTransactionsTable extends Migration
     {
         Schema::dropIfExists('transactions');
         Schema::dropIfExists('transactionsConcepts');
+        Schema::dropIfExists('currencies');
     }
 }

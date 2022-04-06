@@ -47,7 +47,7 @@ class UserController extends Controller
         }
         
         //dd($users);
-        return view('user.index',compact('title','users'));
+        return view('extranet.user.index',compact('title','users'));
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller
         $title = array('Usuarios','Crear usuario');
         $healthConditions = HealthCondition::all();
 
-        return view('user.create', compact('title','healthConditions'));
+        return view('extranet.user.create', compact('title','healthConditions'));
     }
 
     /**
@@ -87,7 +87,7 @@ class UserController extends Controller
         $title = array('Usuario','1');
         $user = User::find($user->id);
         //dd($user);
-        return view('user.show', compact('user','title'));
+        return view('extranet.user.show', compact('user','title'));
     }
 
     public function edit(User $user)
@@ -96,7 +96,7 @@ class UserController extends Controller
         $user = User::where('id',$user->id)->with(['establishments','healthConditions'])->get();
         $healthConditions = HealthCondition::all();
         //dd($user);
-        return view('user.edit',compact('title','user','healthConditions'));
+        return view('extranet.user.edit',compact('title','user','healthConditions'));
     }
 
     /**

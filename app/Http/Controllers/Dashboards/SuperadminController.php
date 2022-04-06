@@ -14,6 +14,8 @@ class SuperadminController extends Controller
 
     public function index()
     {
+        // dd($data);
+
         $title = array('Dashboard','Super Administrador');
         //$users = User::with(['relations', 'roles'])->get();
         

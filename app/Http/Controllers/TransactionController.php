@@ -19,8 +19,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all()->with('');
-        return view('transaction.index', compact('transactions'));
+        $title = array('Transacciones', 'Todas');
+        $transactions = Transaction::all();
+        return view('extranet.transaction.index', compact('title','transactions'));
     }
 
     /**
@@ -43,12 +44,6 @@ class TransactionController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //

@@ -15,7 +15,7 @@ class CreateMenusProductsTable extends Migration
     {
         Schema::create('menus_products', function (Blueprint $table) {
             $table->unsignedSmallInteger('menu_id');
-            $table->unsignedInteger('product_id');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
 
             $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('cascade')->onDelete('no action');
